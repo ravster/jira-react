@@ -2,25 +2,45 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function ConfigForm(props) {
+    return(
+	<div>
+	<form onSubmit={props.onSubmit}>
+	<label>
+	Subdomain:
+	<input type='text' onChange={props.handleChange} />
+	</label>
+	<label>
+	JIRA API Key:
+	<input type='text' onChange={props.handleApiKeyChange} />
+	</label>
+	</form>
+      </div>
+    )
+}
+
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {subdomain: '', apiKey: ''}
+  }
+
+  handleApiKeyChange = (e) => {
+    this.setState({apiKey: e.target.value})
+  }
+  handleSubdomainChange = (e) => {
+    this.setState({subdomain: e.target.value})
+  }
+
+  render() {
+    return (
+	<div className="App">
+	<ConfigForm
+      handleApiKeyChange={this.handleApiKeyChange}
+      handleChange={this.handleSubdomainChange} />
+	</div>
+    );
+  }
 }
 
 export default App;
