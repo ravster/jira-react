@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function ConfigForm(props) {
@@ -12,7 +11,7 @@ function ConfigForm(props) {
 	</label>
 	<label>
 	JIRA API Key:
-	<input type='text' onChange={props.handleApiKeyChange} />
+	<input type='password' onChange={props.handleApiKeyChange} />
 	</label>
 	</form>
       </div>
